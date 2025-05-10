@@ -1,0 +1,15 @@
+requests
+openai
+uvicorn
+fastapi
+python-multipart
+dotenv
+pydantic
+twilio
+bs4
+tiktoken
+pandas
+scikit-learn
+langchain
+langchain_community
+rapidfuzz

@@ -1,0 +1,40 @@
+# Project directories
+keys/
+tmp/
+data/
+tests/results/
+__ignore**
+
+# Testing
+.coverage
+
+# Jupyter
+.ipynb_checkpoints
+
+# Environments
+*.env
+Pipfile*
+Pipfile
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*.py[cod]
+*/*.py[cod]
+*/*/*.py[cod]
+*/*/*/*.py[cod]
+*$py.class/
+
+# Vim swap files
+*.swp
+*/*.swp
+*/*/*.swp
+*/*/*/*.swp
+
+# Mac
+
+# Vscode
+.vscode/
