@@ -7,18 +7,18 @@ Respuesta:
 """
 
 INTENT_CLASSIFICATION = """
-Clasifica la siguiente pregunta del cliente en una de estas dos categorías:
+Clasifica la siguiente solicitud del cliente en una de estas dos categorías:
 - "general"
 - "catalog"
 
-Responde con unicamente el diccionario que contiene el tipo de pregunta y no incluyas ningún otro texto.
+Responde con unicamente el diccionario que contiene el tipo de solicitud y no incluyas ningún otro texto.
 
 Ejemplos:
-Pregunta: ¿Dónde están ubicadas sus sucursales?
+Solicitud: ¿Dónde están ubicadas sus sucursales?
 Respuesta:
 {"_type": "general"}
 
-Pregunta: ¿Qué tipos de zapatos tienen para niños?
+Solicitud: ¿Estoy buscando un auto pequeñó.
 Respuesta:
 {"_type": "catalog"}
 """
