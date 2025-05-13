@@ -1,6 +1,6 @@
 import logging
 
-from .base_bot import _BaseBot
+from .baseagents._basebot import _BaseBot
 from .config.prompts import KAVAK_SALES
 
 

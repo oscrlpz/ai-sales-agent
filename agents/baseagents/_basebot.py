@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 from openai import OpenAI
 
-from .config.llm_models import AVAILABLE_MODELS
+from ..config.llm_models import AVAILABLE_MODELS
 
 
 class _BaseBot:
@@ -20,19 +20,31 @@ class _BaseBot:
         self.api_key = self.model_info["api_key"]
         self.client = OpenAI(api_key=self.api_key, base_url=self.base_url)
 
+    @staticmethod
+    def _merge_consecutive_messages(messages):
+        if not messages:
+            return []
+
+        merged = [messages[0]]
+        for msg in messages[1:]:
+            last = merged[-1]
+            if msg["role"] == last["role"]:
+                last["content"] += "\n" + msg["content"]
+            else:
+                merged.append(msg)
+        return merged
+
     @property
     def chat_history(self):
         history = [
             {"role": x["role"], "content": x["content"]} for x in self._chat_history
         ]
-        if hasattr(self, "system_prompt"):
-            if self.system_prompt:
-                sys_prompt = {
-                    "role": "system",
-                    "content": self.system_prompt,
-                }
-                return [sys_prompt] + history
-        return history
+
+        if hasattr(self, "system_prompt") and self.system_prompt:
+            sys_prompt = {"role": "system", "content": self.system_prompt}
+            history = [sys_prompt] + history
+
+        return self._merge_consecutive_messages(history)
 
     @chat_history.setter
     def chat_history(self, _chat_history: List[Dict[str, str]]):

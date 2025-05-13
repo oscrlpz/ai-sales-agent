@@ -4,4 +4,3 @@ jupyter
 pytest
 pre-commit
 pytest-cov
-langchain
