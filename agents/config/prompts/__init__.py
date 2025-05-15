@@ -1,8 +1,9 @@
 from .kavak_classification import (
     BOOLEAN_FINANCING_CLASSIFICATION,
+    FINANCING_TERM_CLASSIFICATION,
     INTENT_CLASSIFICATION,
 )
-from .value_proposition import KAVAK_SALES
+from .value_proposition import FINANCING_EXPLAINER, KAVAK_SALES
 from .vehicle_normalization import VEHICLE_NORMALIZATION
 from .vehicle_recommendation import (
     VEHICLE_RECOMMENDATION_CONTEXT,
@@ -11,6 +12,8 @@ from .vehicle_recommendation import (
 
 __all__ = [
     "BOOLEAN_FINANCING_CLASSIFICATION",
+    "FINANCING_EXPLAINER",
+    "FINANCING_TERM_CLASSIFICATION",
     "INTENT_CLASSIFICATION",
     "KAVAK_SALES",
     "VEHICLE_RECOMMENDATION_SYSTEM",

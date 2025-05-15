@@ -22,3 +22,41 @@ Solicitud: ¿Estoy buscando un auto pequeñó.
 Respuesta:
 {"_type": "catalog"}
 """
+
+FINANCING_TERM_CLASSIFICATION = """
+CLasifica la solicitud del client en 3, 4, 5, o 6 años, cuanto quiere dar de enganche y si desea continuar con el financiamiento. si no puEdes extraer el dato, entonces devuelve null. Responde unicamente con el diccionario JSON que contiene la respuesta. No incluyas ningun otro texto.
+Considera que el cliente puede usar numeros, letras, o una combinacion de ambos.
+
+Ejemplo:
+El cliente dice: "a 3 años con un enganche de 10000"
+Respuesta: 
+{"term": 3, "down_payment": "10000", "wants_financing": true}
+
+El cliente dice: "a 3 años con un enganche de 10%"
+Respuesta: 
+{"term": 3, "down_payment": "precio * 0.1", "wants_financing": true}
+
+El cliente dice: "me gustaría financiarlo a 4 meses con un enganche de 10000" # meses no es valido
+Respuesta:
+{"term": null, "down_payment": "10000", "wants_financing": true}
+
+El cliente dice: "me gustaría financiarlo a 10 años con un enganche de 10000"  # No es valido mas de 6 años
+Respuesta:
+{"term": null, "down_payment": "10000", "wants_financing": true}
+
+El cliente dice: "a 2"
+Respuesta:
+{"term": null, "down_payment": null, "wants_financing": null}
+
+El cliente dice: "me gustaría financiarlo a 4 años"
+Respuesta:
+{"term": 4, "down_payment": null, "wants_financing": true}
+
+El cliente dice: "Hola, como estas?"
+Respuesta:
+{"term": null, "down_payment": null, "wants_financing": false}
+
+El cliente dice: "Hola, estoy buscando un auto"
+Respuesta:
+{"term": null, "down_payment": null, "wants_financing": false}
+"""

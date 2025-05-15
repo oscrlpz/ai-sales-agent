@@ -1,5 +1,9 @@
 from .baseagents._classifier import Classifier
-from .config.prompts import BOOLEAN_FINANCING_CLASSIFICATION, INTENT_CLASSIFICATION
+from .config.prompts import (
+    BOOLEAN_FINANCING_CLASSIFICATION,
+    FINANCING_TERM_CLASSIFICATION,
+    INTENT_CLASSIFICATION,
+)
 
 
 class FinancingBoolClassifier(Classifier):
@@ -20,3 +24,13 @@ class IntentClassifier(Classifier):
     def __init__(self, model: str):
         super().__init__(model)
         self.system_prompt = INTENT_CLASSIFICATION
+
+
+class FinancingTermClassifier(Classifier):
+    """
+    A class to classify the financing term.
+    """
+
+    def __init__(self, model: str):
+        super().__init__(model)
+        self.system_prompt = FINANCING_TERM_CLASSIFICATION

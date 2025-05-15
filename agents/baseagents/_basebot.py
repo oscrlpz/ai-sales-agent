@@ -39,12 +39,12 @@ class _BaseBot:
         history = [
             {"role": x["role"], "content": x["content"]} for x in self._chat_history
         ]
+        history = self._merge_consecutive_messages(history)
 
         if hasattr(self, "system_prompt") and self.system_prompt:
             sys_prompt = {"role": "system", "content": self.system_prompt}
             history = [sys_prompt] + history
-
-        return self._merge_consecutive_messages(history)
+        return [{"role": x["role"], "content": x["content"]} for x in history]
 
     @chat_history.setter
     def chat_history(self, _chat_history: List[Dict[str, str]]):
