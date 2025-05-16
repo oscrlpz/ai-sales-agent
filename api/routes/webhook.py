@@ -1,39 +1,14 @@
 import logging
-import os
-import time
 
-from dotenv import load_dotenv
 from fastapi import APIRouter, BackgroundTasks, Form
 from fastapi.responses import Response
-from twilio.rest import Client as TwilioClient
 from twilio.twiml.messaging_response import MessagingResponse
 
-# from ..services.chatbot import reply_message_stream
 from ..services.sales_agent import run_chat
+from ..services.whatsapp_service import send_message
 
 logger = logging.getLogger(__name__)
 webhook_router = APIRouter(prefix="/webhook", tags=["whatsapp"])
-
-
-def send_message(body: str, to_num: str) -> str:
-    """
-    Function to reply to a message using the KavakGeneralBot.
-    """
-    account_sid = os.getenv("TWILIO_ACCOUNT_SID")
-    auth_token = os.getenv("TWILIO_AUTH_TOKEN")
-    twilio_client = TwilioClient(account_sid, auth_token)
-    # for reply in reply_message_stream(body):
-    #     logger.info(f"Sending message to {to_num}: {reply}")
-    #     time.sleep(1)
-    #     twilio_client.messages.create(
-    #         body=reply,
-    #         from_="whatsapp:+14155238886",
-    #         to=f"{to_num}"
-    #     )
-    reply = run_chat(user_input=body, session_id=to_num)
-    twilio_client.messages.create(
-        body=reply, from_="whatsapp:+14155238886", to=f"{to_num}"
-    )
 
 
 @webhook_router.post("/reply")
@@ -43,6 +18,10 @@ async def reply_whatsapp(
     test: bool = False,
     background_tasks: BackgroundTasks = None,
 ):
+    """Function to reply to a WhatsApp message.
+
+    Receives the message from the whatsapp webhook and sends a reply using the Twilio API as a background task.
+    """
     logger.info(f"Message from {From}: {Body}")
     resp = MessagingResponse()
     msg = resp.message()

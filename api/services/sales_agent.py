@@ -35,8 +35,9 @@ tern_classifier = FinancingTermClassifier(model=MODEL)
 financing_explainer = FinancingExplainer(model=MODEL)
 
 
-def run_chat(user_input: str, session_id: str):
-    print(f"Session ID: {session_id}")
+def run_chat(user_input: str, session_id: str, verbose: bool = True) -> str:
+    if verbose:
+        print(f"Session ID: {session_id}")
 
     # Load chat history from DB
     history = chat_manager.get_history(session_id)
@@ -53,7 +54,8 @@ def run_chat(user_input: str, session_id: str):
         car_data = {}
 
     # user_input
-    print(f"Tú: {user_input}")
+    if verbose:
+        print(f"Tú: {user_input}")
 
     # Save user message
     chat_manager.save_message(
@@ -102,7 +104,7 @@ def run_chat(user_input: str, session_id: str):
             response = "Entiendo, seguimos sin financiamiento."
         state = "start"
         # except Exception as e:
-        #     print(f"Error: {e}")
+        #     if verbose: print(f"Error: {e}")
         #     response = "¿A cuantos años quieres financiarlo y con cuanto de enganche?"
 
     # Save assistant message
@@ -113,5 +115,6 @@ def run_chat(user_input: str, session_id: str):
         state=state,
         car_data=json.dumps(car_data) if car_data else None,
     )
-    print(f"🤖 {response}\n")
+    if verbose:
+        print(f"🤖 {response}\n")
     return response
