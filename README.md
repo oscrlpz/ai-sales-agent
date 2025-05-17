@@ -136,14 +136,12 @@ Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
 
 ```
 OPENAI_API_KEY=<OPENAI_API_KEY>
-DEEPSEEK_API_KEY=<DEEPSEEK_API_KEY>
 TWILIO_RECOVERY_CODE=<TWILIO_RECOVERY_CODE>
 TWILIO_AUTH_TOKEN=<TWILIO_AUTH_TOKEN>
 TWILIO_ACCOUNT_SID=<TWILIO_ACCOUNT_SID>
 API_LLM_MODEL=gpt-3.5-turbo
 CATALOG_PATH=data/csv/sample_caso_ai_engineer.csv
 DB_PATH=data/db/chat_history.db
-
 WORKERS=1
 PORT=8000
 ```
@@ -155,6 +153,12 @@ docker run -p 8000:8000 --env-file .env ai-sales-agent-api
 ```
 
 La API estará disponible en: [http://localhost:8000](http://localhost:8000)
+
+La APi esta escrita en FastAPI por lo que automáticamente genera una documentación interactiva en [http://localhost:8000/docs](http://localhost:8000/docs) y una alternativa en [http://localhost:8000/redoc](http://localhost:8000/redoc).
+
+Puedes realizar pruebas al endpoints desde la documentación interactiva. El endpoint principal es `/webhook/reply`, que recibe mensajes de WhatsApp y devuelve respuestas generadas por el agente conversacional. Asegurate de elegir `test=true` en los parámetros de la consulta para evitar que se envíen mensajes reales a través de Twilio.
+
+[![FastAPI Docs](resources/fastapi_endpoint.png)](resources/fastapi_endpoint.png)
 
 ## 🧠 Funcionamiento del agente de ventas
 
