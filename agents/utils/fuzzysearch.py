@@ -44,7 +44,6 @@ def fuzzy_filter(
         if val is None:
             weights[key] = 0
     weights = _normalize_weights(weights)
-    print("weights", weights)
 
     # Calculate score per key
     for key in weights:

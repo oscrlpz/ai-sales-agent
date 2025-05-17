@@ -10,11 +10,11 @@ Ejemplos:
 Usuario: "kiero un chebrolet onix 2021 con menos de 50000 km"
 Respuesta:
 {{
-  "marca": "Chevrolet",
-  "modelo": "Onix",
-  "año": 2021,
+  "make": "Chevrolet",
+  "model": "Onix",
+  "year": 2021,
   "version": null,
-  "precio": null,
+  "price": null,
   "km": 50000,
   "bluetooth": null,
   "car_play": null,
@@ -25,11 +25,11 @@ Respuesta:
 Usuario: "toyotaa corola 2018 con carplay "
 Respuesta:
 {{
-  "marca": "Toyota",
-  "modelo": "Corolla",
-  "año": 2018,
+  "make": "Toyota",
+  "model": "Corolla",
+  "year": 2018,
   "version": null,
-  "precio": null,
+  "price": null,
   "km": null,
   "bluetooth": null,
   "car_play": "Sí",
@@ -40,11 +40,11 @@ Respuesta:
 Usuario: "una SUV pequeña porfa"
 Respuesta:
 {{
-  "marca": null,
-  "modelo": null,
-  "año": null,
+  "make": null,
+  "model": null,
+  "year": null,
   "version": null,
-  "precio": null,
+  "price": null,
   "km": null,
   "bluetooth": null,
   "car_play": null,

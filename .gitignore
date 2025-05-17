@@ -1,7 +1,9 @@
 # Project directories
 keys/
 tmp/
-data/
+logs/
+# data/
+db/
 tests/results/
 __ignore**
 

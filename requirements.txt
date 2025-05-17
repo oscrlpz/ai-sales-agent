@@ -11,5 +11,6 @@ tiktoken
 pandas
 scikit-learn
 langchain
-langchain_community
+langchain-community
+langchain-openai
 rapidfuzz
