@@ -34,7 +34,7 @@ Respuesta:
 
 El cliente dice: "a 3 años con un enganche de 10%"
 Respuesta: 
-{"term": 3, "down_payment": "precio * 0.1", "wants_financing": true}
+{"term": 3, "down_payment": "price * 0.1", "wants_financing": true}
 
 El cliente dice: "me gustaría financiarlo a 4 meses con un enganche de 10000" # meses no es valido
 Respuesta:

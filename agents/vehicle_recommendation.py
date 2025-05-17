@@ -15,11 +15,11 @@ class VehicleRecommender(_Recommender):
     """
 
     weights = {
-        "marca": 50,
-        "modelo": 50,
-        "año": 10,
+        "make": 50,
+        "model": 50,
+        "year": 10,
         "version": 20,
-        "precio": 30,
+        "price": 30,
         "km": 20,
         "bluetooth": 20,
         "car_play": 20,

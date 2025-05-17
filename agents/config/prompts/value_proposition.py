@@ -27,5 +27,5 @@ KAVAK_SALES = (
     + KAVAK_SALES
 )
 
-FINANCING_EXPLAINER = """Se te va a pasar un diccionarrio con la siguiente información: 'precio', 'enganche', 'años', 'mensualidad', 'total_pagado', 'intereses_totales' y 'monto_financiar' en formato json,
+FINANCING_EXPLAINER = """Se te va a pasar un diccionarrio con la siguiente información: 'price', 'enganche', 'años', 'mensualidad', 'total_pagado', 'intereses_totales' y 'monto_financiar' en formato json,
 devuelve una respuesta en lenguaje natural, explicando al cliente el plan de financiamiento. No utilices markdown que no es compatible con whatsapp. Responde clara y concisamente."""

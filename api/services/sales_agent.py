@@ -95,7 +95,7 @@ def run_chat(user_input: str, session_id: str, verbose: bool = True) -> str:
         terms = tern_classifier.classify(user_input)
         if terms["wants_financing"]:
             financing_plan = calc_financing(
-                total_price=car_data[0]["precio"],
+                total_price=car_data[0]["price"],
                 down_payment=terms["down_payment"],
                 term=terms["term"],
             )

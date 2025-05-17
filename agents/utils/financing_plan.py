@@ -1,5 +1,5 @@
 def calc_down_from_str(down_str, total_price):
-    _expr = down_str.replace("precio", str(total_price))
+    _expr = down_str.replace("price", str(total_price))
     return eval(_expr)
 
 
@@ -22,7 +22,7 @@ def calc_financing(total_price, down_payment, term):
     intereses_totales = total_pagado - monto_financiar
 
     return {
-        "precio": total_price,
+        "price": total_price,
         "enganche": down,
         "años": term,
         "mensualidad": round(mensualidad, 2),
