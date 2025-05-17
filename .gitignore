@@ -2,7 +2,8 @@
 keys/
 tmp/
 logs/
-data/
+# data/
+db/
 tests/results/
 __ignore**
 

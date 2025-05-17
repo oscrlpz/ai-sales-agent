@@ -39,7 +39,7 @@ source .venv/bin/activate  # En Windows: .venv\Scripts\activate
   pip install -r requirements.txt
   ```
 
-* Para desarrollo (esto incluye solo las herramientas que no son necesarias para producción, como `black`, `isort`, `pre-commit`, etc.):
+* Para desarrollo (esto incluye solo las herramientas que no son necesarias para producción, como `black`, `isort`, `pre-commit`, `pytest` etc.):
 
   ```bash
   pip install -r requirements-dev.txt
@@ -151,10 +151,10 @@ PORT=8000
 ### 3. Correr la imagen
 
 ```bash
-docker run -p 8008:8000 --env-file .env ai-sales-agent-api
+docker run -p 8000:8000 --env-file .env ai-sales-agent-api
 ```
 
-La API estará disponible en: [http://localhost:8008](http://localhost:8008)
+La API estará disponible en: [http://localhost:8000](http://localhost:8000)
 
 ## 🧠 Funcionamiento del agente de ventas
 
@@ -171,7 +171,7 @@ El agente conversacional sigue un flujo de control basado en estados y guarda el
 2. **Inicialización de agentes**:
 
    * `IntentClassifier`: Detecta si el usuario quiere hablar de catálogo, generalidades o financiamiento.
-   * `KavakGeneralBot`: Responde preguntas generales.
+   * `KavakGeneralBot`: Responde preguntas generales. La prompt se genera a partir de un scraper que va a la página de [Kavak](https://www.kavak.com/mx/blog/sedes-de-kavak-en-mexico) y obtiene información relevante.
    * `VehicleNormalizer`: Estandariza el input del usuario buscando extraer información relevante y evitando errores de ortografía, entradas ambiguas o mal escritas.
    * `VehicleRecommender`: Sugiere vehículos del catálogo basado en la solicitud del usuario normalizada.
    * `FinancingBoolClassifier`: Determina si el usuario quiere financiamiento, si o no.
@@ -247,6 +247,8 @@ pytest -s tests/integration
 ```
 
 La prueba simula todo el flujo donde un cliente pide información general de Kavak, pide recomendaciones de autos y pregunta por financiamiento. Finalmente el cliente regresa y pide infromación que previeamente ya había preguntado y el agente le recuerda la conversación previa.
+
+Nota: Es necesario tener instalada la librería `pytest` para correr las pruebas. Esta se instala automáticamente al correr `pip install -r requirements-dev.txt`.
 
 ### ☁️ Opciones de despliegue: producción y pruebas locales
 
